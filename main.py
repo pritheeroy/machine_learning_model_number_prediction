@@ -1,4 +1,4 @@
-""""Deep Learning"""
+""""Deep Learning Model"""
 import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
@@ -26,7 +26,8 @@ print(loss)
 
 model.save('digits.model')
 
-for x in range(1, 6):
+#To test model, create png uploads of numbers from a to b and place them in the same file as main.py.
+for x in range(a, b):
     img = cv.imread(f'{x}.png')[:,:,0]
     img = np.invert(np.array([img]))
     prediction = model.predict(img)
