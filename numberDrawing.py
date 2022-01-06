@@ -1,33 +1,38 @@
-
 try:
-    import sys, os
+    import sys
+    import os
+
     stdout = sys.__stdout__
     stderr = sys.__stderr__
-    sys.stdout = open(os.devnull,'w')
-    sys.stderr = open(os.devnull,'w')
+    sys.stdout = open(os.devnull, 'w')
+    sys.stderr = open(os.devnull, 'w')
     import pygame
     import tensorflow as tf
     import matplotlib.pyplot as plt
     import numpy as np
     from tkinter import *
     from tkinter import messagebox
+
     sys.stdout = stdout
     sys.stderr = stderr
 except:
-    import install_requirements
-    import sys, os
+    import sys
+    import os
+
     stdout = sys.__stdout__
     stderr = sys.__stderr__
-    sys.stdout = open(os.devnull,'w')
-    sys.stderr = open(os.devnull,'w')
+    sys.stdout = open(os.devnull, 'w')
+    sys.stderr = open(os.devnull, 'w')
     import pygame
     import tensorflow as tf
     import matplotlib.pyplot as plt
     import numpy as np
     from tkinter import *
     from tkinter import messagebox
+
     sys.stdout = stdout
     sys.stderr = stderr
+
 
 class pixel(object):
     def __init__(self, x, y, width, height):
@@ -35,7 +40,7 @@ class pixel(object):
         self.y = y
         self.width = width
         self.height = height
-        self.color = (255,255,255)
+        self.color = (255, 255, 255)
         self.neighbors = []
 
     def draw(self, surface):
@@ -43,8 +48,8 @@ class pixel(object):
 
     def getNeighbors(self, g):
         # Get the neighbours of each pixel in the grid, this is used for drawing thicker lines
-        j = self.x // 20 # the var i is responsible for denoting the current col value in the grid
-        i = self.y // 20 # the var j is responsible for denoting thr current row value in the grid
+        j = self.x // 20  # the var i is responsible for denoting the current col value in the grid
+        i = self.y // 20  # the var j is responsible for denoting thr current row value in the grid
         rows = 28
         cols = 28
 
@@ -65,7 +70,7 @@ class pixel(object):
         if j + 1 < rows and i > -1 and i - 1 > 0:  # Bottom Left
             self.neighbors.append(g.pixels[i - 1][j + 1])
 
-        if j - 1 < rows and i < cols - 1 and j - 1 > 0:  # Top Right
+        if rows > j - 1 > 0 and i < cols - 1:  # Top Right
             self.neighbors.append(g.pixels[i + 1][j - 1])
 
         if j < rows - 1 and i < cols - 1:  # Bottom Right
@@ -102,7 +107,7 @@ class grid(object):
             for c in range(self.cols):
                 self.pixels[r][c].getNeighbors(self)
 
-    def clicked(self, pos): #Return the position in the grid that user clicked on
+    def clicked(self, pos):  # Return the position in the grid that user clicked on
         try:
             t = pos[0]
             w = pos[1]
@@ -121,7 +126,7 @@ class grid(object):
 
         for i in range(len(li)):
             for j in range(len(li[i])):
-                if li[i][j].color == (255,255,255):
+                if li[i][j].color == (255, 255, 255):
                     newMatrix[i].append(0)
                 else:
                     newMatrix[i].append(1)
@@ -147,8 +152,8 @@ def guess(li):
     window.withdraw()
     messagebox.showinfo("Prediction", "I predict this number is a: " + str(t))
     window.destroy()
-    #plt.imshow(li[0], cmap=plt.cm.binary)
-    #plt.show()
+    # plt.imshow(li[0], cmap=plt.cm.binary)
+    # plt.show()
 
 
 def main():
@@ -166,9 +171,9 @@ def main():
 
                 pos = pygame.mouse.get_pos()
                 clicked = g.clicked(pos)
-                clicked.color = (0,0,0)
+                clicked.color = (0, 0, 0)
                 for n in clicked.neighbors:
-                    n.color = (0,0,0)
+                    n.color = (0, 0, 0)
 
             if pygame.mouse.get_pressed()[2]:
                 try:
@@ -181,13 +186,13 @@ def main():
         g.draw(win)
         pygame.display.update()
 
+
 pygame.init()
 width = height = 560
 win = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Number Guesser")
 g = grid(28, 28, width, height)
 main()
-
 
 pygame.quit()
 quit()
