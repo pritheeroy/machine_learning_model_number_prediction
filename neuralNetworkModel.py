@@ -1,7 +1,4 @@
-import keras
 import tensorflow as tf
-import matplotlib.pyplot as plt
-import numpy as np
 
 mnist = tf.keras.datasets.mnist
 
@@ -26,6 +23,6 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 model.fit(x_train, y_train, epochs=3)
-model.save('epic_num_reader.model')
+model.save('number_reader.model')
 
-print("Model saved")
+print("Model Saved. You may now test the network.")
