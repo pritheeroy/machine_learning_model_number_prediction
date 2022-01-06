@@ -25,9 +25,6 @@ for x in range(len(predictions)):
     print("I predict this number is a:", guess)
     print("Number Actually Is a:", actual)
     if guess != actual:
-        # print("--------------")
-        # print('WRONG')
-        # print('---------------')
         count += 1
     plt.imshow(x_test[x], cmap=plt.cm.binary)
     plt.show()

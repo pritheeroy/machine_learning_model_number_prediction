@@ -1,5 +1,6 @@
 keras
-numpy
-matplotlib
-pygame
+numpy~=1.22.0
+matplotlib~=3.5.1
+pygame~=2.1.2
 tensorflow
+easygui~=0.98.2

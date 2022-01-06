@@ -1,3 +1,4 @@
+
 try:
     import sys
     import os
@@ -10,6 +11,7 @@ try:
     import tensorflow as tf
     import matplotlib.pyplot as plt
     import numpy as np
+    import easygui
     from tkinter import *
     from tkinter import messagebox
 
@@ -27,6 +29,7 @@ except:
     import tensorflow as tf
     import matplotlib.pyplot as plt
     import numpy as np
+    import easygui
     from tkinter import *
     from tkinter import messagebox
 
@@ -145,13 +148,10 @@ def guess(li):
     model = tf.keras.models.load_model('m.model')
 
     predictions = model.predict(li)
-    print(predictions[0])
+    # print(predictions[0])
     t = (np.argmax(predictions[0]))
     print("I predict this number is a:", t)
-    window = Tk()
-    window.withdraw()
-    messagebox.showinfo("Prediction", "I predict this number is a: " + str(t))
-    window.destroy()
+
     # plt.imshow(li[0], cmap=plt.cm.binary)
     # plt.show()
 
