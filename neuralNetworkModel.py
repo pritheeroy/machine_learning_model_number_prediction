@@ -32,3 +32,5 @@ model.fit(x_train, y_train, epochs=3)
 model.save('number_reader.model')
 
 print("Model Saved. You may now test the network.")
+
+# Project was developed using TechwithTims Tutorial
