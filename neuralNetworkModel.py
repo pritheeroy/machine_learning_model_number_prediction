@@ -20,7 +20,7 @@ model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
 model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
-model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
+model.add(tf.keras.layers.Dense(15, activation=tf.nn.softmax))
 
 # Compiling the model
 model.compile(optimizer='adam',
